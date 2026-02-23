@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flash-Card (Static)</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Flash-Card</h1>
+    <div class="deck-selector">
+      <select disabled>
+        <option selected>Programming Terms</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="switches">
+    <button id="left-button" class="left-button">Previous</button>
+    <button id="right-button" class="right-button">Next</button>
+    <button id="reset-button">Reset</button>
+    <a href="#">Start Quiz</a>
+    <a href="#">Search</a>
+    <a href="#">Stats</a>
+  </div>
+
+  <div class="progress-container"><div id="progress-bar"></div></div>
+
+  <div class="container" id="card-container">
+    <div class="card" data-id="1">
+      <div class="front"><h2>What is the full meaning of HTTP?</h2></div>
+      <div class="back"><h2>Hyper Text Transfer Protocol</h2></div>
+    </div>
+    <div class="card" data-id="2">
+      <div class="front"><h2>What is the full meaning of HTML?</h2></div>
+      <div class="back"><h2>Hyper Text Markup Language</h2></div>
+    </div>
+  </div>
+
+  <div class="add-card">
+    <h3>Add New Card</h3>
+    <input type="text" placeholder="Front">
+    <input type="text" placeholder="Back">
+    <button>Add Card</button>
+  </div>
+
+  <script src="static/script.js"></script>
+</body>
+</html>

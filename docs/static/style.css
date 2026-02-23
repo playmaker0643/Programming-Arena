@@ -1,0 +1,244 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+    perspective: 1000px;
+}
+.card {
+    width: 250px;
+    height: 230px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow:  8px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+.card.flipped {
+    transform: rotateY(180deg);
+}
+.card .front, .card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #898989;
+    border-radius: 20px;
+    text-align: center;
+    border: #51DA58 solid 5px;
+}
+.card .front {
+    background-color: #000000;
+}
+.card .back {
+    background-color: #000000;
+    color: #898989;
+    transform: rotateY(180deg);
+}
+.actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+.actions a {
+    color: #51DA58;
+    text-decoration: none;
+    font-size: 14px;
+}
+.add-card {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    border: #51DA58 solid 2px;
+}
+.add-card input {
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    width: 200px;
+}
+.add-card button {
+    background-color: #51DA58;
+    color: #000000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+.edit-form input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 300px;
+}
+.edit-form button {
+    background-color: #51DA58;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.edit-form a {
+    margin-top: 20px;
+    color: #51DA58;
+    text-decoration: none;
+}
+.deck-selector {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.deck-selector select {
+    padding: 5px;
+    background-color: #000000;
+    color: #51DA58;
+    border: #51DA58 solid 1px;
+}
+.add-deck {
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    border: #51DA58 solid 2px;
+}
+.add-deck input {
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    width: 200px;
+}
+.add-deck button {
+    background-color: #51DA58;
+    color: #000000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+.quiz-container form {
+    margin-top: 20px;
+}
+.quiz-container input {
+    padding: 10px;
+    width: 300px;
+}
+.quiz-container button {
+    background-color: #51DA58;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.result {
+    text-align: center;
+    margin-top: 100px;
+}
+.result a {
+    color: #51DA58;
+    text-decoration: none;
+}
+.search-form {
+    text-align: center;
+    margin-top: 80px;
+}
+.search-form input {
+    padding: 10px;
+    width: 300px;
+}
+.search-form button {
+    background-color: #51DA58;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.search-form a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #51DA58;
+    text-decoration: none;
+}
+.stats {
+    text-align: center;
+    margin-top: 100px;
+    color: #51DA58;
+}
+.stats a {
+    color: #51DA58;
+    text-decoration: none;
+}
+status {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #898989;
+    background-color: #000000;
+    border: #51DA58 solid 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {    color: #fffdfd;
+}
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #51DA58;
+    position: absolute;
+    top: 10px;
+}
+#switches{
+    display: flex;
+    position: absolute;
+    bottom: 90px;
+    justify-content: space-between;
+    gap: 280px;
+}
+.progress-container {
+    position: absolute;
+    bottom: 50px;
+    width: 300px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+#progress-bar {
+    height: 100%;
+    background-color: #51DA58;
+    border-radius: 5px;
+    width: 0%;
+}
