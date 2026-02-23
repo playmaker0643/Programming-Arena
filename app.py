@@ -110,6 +110,14 @@ def stats():
     return render_template('stats.html', total_cards=total_cards, total_decks=total_decks)
 
 
+@app.route('/api/deck/<int:deck_id>/cards')
+def api_deck_cards(deck_id):
+    deck = next((d for d in decks if d['id'] == deck_id), None)
+    if not deck:
+        return jsonify({"error": "Deck not found"}), 404
+    return jsonify(deck['cards'])
+
+
 @app.route('/import', methods=['POST'])
 def import_deck():
     file = request.files.get('file')
