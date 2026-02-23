@@ -1,0 +1,11 @@
+# Render service manifest (optional)
+services:
+  - type: web
+    name: Programming-Arena
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
+    autoDeploy: true
+    instanceType: standard
+    port: 10000
