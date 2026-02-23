@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash-Card</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Flash-Card</h1>
+        <div class="deck-selector">
+            <form action="{{ url_for('index') }}" method="get">
+                <select name="deck" onchange="this.form.submit()">
+                    {% for deck in decks %}
+                    <option value="{{ deck.id }}" {% if deck.id == current_deck.id %}selected{% endif %}>{{ deck.name }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+    </div>
+    <div id="switches">
+        <button id="left-button" class="left-button">Previous</button>
+        <button id="right-button" class="right-button">Next</button>
+        <button id="reset-button">Reset</button>
+        <a href="{{ url_for('quiz', deck_id=current_deck.id) }}">Start Quiz</a>
+        <a href="{{ url_for('search', deck=current_deck.id) }}">Search</a>
+        <a href="{{ url_for('stats') }}">Stats</a>
+    </div>
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <div class="container" id="card-container">
+        {% for card in current_deck.cards %}
+        <div class="card" data-id="{{ card.id }}">
+            <div class="front">
+                <h2>{{ card.front }}</h2>
+            </div>
+            <div class="back">
+                <h2>{{ card.back }}</h2>
+            </div>
+            <div class="actions">
+                <a href="{{ url_for('edit_card', card_id=card.id, deck=current_deck.id) }}">Edit</a>
+                <a href="{{ url_for('delete_card', card_id=card.id) }}?deck={{ current_deck.id }}">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="add-card">
+        <h3>Add New Card</h3>
+        <form action="{{ url_for('add_card') }}" method="post">
+            <input type="hidden" name="deck_id" value="{{ current_deck.id }}">
+            <input type="text" name="front" placeholder="Front" required>
+            <input type="text" name="back" placeholder="Back" required>
+            <button type="submit">Add Card</button>
+        </form>
+    </div>
+    <div class="add-deck">
+        <h3>Add New Deck</h3>
+        <form action="{{ url_for('add_deck') }}" method="post">
+            <input type="text" name="name" placeholder="Deck Name" required>
+            <button type="submit">Add Deck</button>
+        </form>
+        <h3>Import Deck</h3>
+        <form action="{{ url_for('import_deck') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".json" required>
+            <button type="submit">Import</button>
+        </form>
+        <a href="{{ url_for('export_deck', deck_id=current_deck.id) }}">Export Deck</a>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
